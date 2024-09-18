@@ -20,7 +20,7 @@ open("scaler_X.pkl", "wb").write(response_scaler_X.content)
 open("target_encoder.pkl", "wb").write(response_target_encoder.content)
 
 #Importar el df original
-df=pd.read_csv("https://github.com/minivillalba4/videogames/blob/a1512a2b3bf3b85c7627d1d1e7cab8d34888bd9b/models/model_videogame%20(2).pkl")
+df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
 
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
