@@ -11,9 +11,9 @@ import requests
 
 
 #Fase Response
-model = joblib.load("models/model_videogame (2).pkl")
-scaler_X = joblib.load("models/scaler_x (1).pkl")
-target_encoder = joblib.load("models/target_encoder_videogame (1).pkl")
+model = joblib.load("models/model_videogame.pkl")
+scaler_X = joblib.load("models/scaler_x.pkl")
+target_encoder = joblib.load("models/target_encoder_videogame.pkl")
 
 
 #Importar el df original
