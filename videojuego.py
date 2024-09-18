@@ -6,7 +6,7 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.metrics import *
 import pickle
 import streamlit as st
-from joblib import load
+import joblib
 import requests
 
 
