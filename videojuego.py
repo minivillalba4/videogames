@@ -10,15 +10,14 @@ from joblib import load
 import requests
 
 
-
+#Fase Response
 response_model = requests.get("https://github.com/minivillalba4/videogames/blob/main/models/model_videogame%20(2).pkl")
-open("model_videogame.pkl", "wb").write(response.content)
-#Importar modelos con pickle
+response_scaler_X=requests.get("https://github.com/minivillalba4/videogames/blob/main/models/scaler_x%20(1).pkl")
+response_target_encoder=requests.get("https://github.com/minivillalba4/videogames/blob/main/models/target_encoder_videogame%20(1).pkl")
+#Importar modelos
 open("model_videogame.pkl", "wb").write(response_model.content)
-
-target_encoder=load("C:/Users/isma_/Desktop/VS Code/Videojuego/target_encoder_videogame (1).pkl")
-scaler_X= load("C:/Users/isma_/Desktop/VS Code/Videojuego/scaler_x (1).pkl")
-
+open("scaler_X.pkl", "wb").write(response_scaler_X.content)
+open("target_encoder.pkl", "wb").write(response_target_encoder.content)
 
 #Importar el df original
 df=pd.read_csv("C:/Users/isma_/Downloads/archive (14)/online_gaming_behavior_dataset.csv")
