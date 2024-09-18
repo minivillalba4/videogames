@@ -11,12 +11,9 @@ import requests
 
 
 #Fase Response
-with open("models/model_videogame (2).pkl", "rb") as file:
-    model = pickle.load(file)
-with open("models/scaler_x (1).pkl", "rb") as file:
-    scaler_X = pickle.load(file)
-with open("models/target_encoder_videogame (1).pkl", "rb") as file:
-    target_encoder = pickle.load(file)
+model = joblib.load("models/model_videogame (2).pkl")
+scaler_X = joblib.load("models/scaler_x (1).pkl")
+target_encoder = joblib.load("models/target_encoder_videogame (1).pkl")
 
 
 #Importar el df original
