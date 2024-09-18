@@ -20,7 +20,7 @@ open("scaler_X.pkl", "wb").write(response_scaler_X.content)
 open("target_encoder.pkl", "wb").write(response_target_encoder.content)
 
 #Importar el df original
-df=pd.read_csv("C:/Users/isma_/Downloads/archive (14)/online_gaming_behavior_dataset.csv")
+df=pd.read_csv("data/online_gaming_behavior_dataset.csv")
 
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
