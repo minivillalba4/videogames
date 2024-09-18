@@ -24,6 +24,10 @@ open("model_videogame.pkl", "wb").write(response_model.content)
 open("scaler_X.pkl", "wb").write(response_scaler_X.content)
 open("target_encoder.pkl", "wb").write(response_target_encoder.content)
 
+# Carga de modelos y transformadores
+model = joblib.load("model_videogame.pkl")
+scaler_X = joblib.load("scaler_X.pkl")
+target_encoder = joblib.load("target_encoder.pkl")
 
 
 #Importar el df original
