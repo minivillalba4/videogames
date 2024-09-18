@@ -9,7 +9,7 @@ import streamlit as st
 from joblib import load
 
 #Importar modelos con pickle
-model= load("C:/Users/isma_/Desktop/VS Code/Videojuego/model_videogame (2).pkl")
+model= load("https://github.com/minivillalba4/videogames/blob/main/models/model_videogame%20(2).pkl")
 target_encoder=load("C:/Users/isma_/Desktop/VS Code/Videojuego/target_encoder_videogame (1).pkl")
 scaler_X= load("C:/Users/isma_/Desktop/VS Code/Videojuego/scaler_x (1).pkl")
 
