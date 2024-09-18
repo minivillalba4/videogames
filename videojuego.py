@@ -10,10 +10,20 @@ import joblib
 import requests
 
 
-#Fase Response
-model = joblib.load("models/model_videogame.pkl")
-scaler_X = joblib.load("models/scaler_x.pkl")
-target_encoder = joblib.load("models/target_encoder_videogame.pkl")
+url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
+url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
+url_target_encoder = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/target_encoder_videogame%20(1).pkl"
+
+# Descargar los archivos
+response_model = requests.get(url_model)
+response_scaler_X = requests.get(url_scaler_X)
+response_target_encoder = requests.get(url_target_encoder)
+
+# Guardar los archivos localmente
+open("model_videogame.pkl", "wb").write(response_model.content)
+open("scaler_X.pkl", "wb").write(response_scaler_X.content)
+open("target_encoder.pkl", "wb").write(response_target_encoder.content)
+
 
 
 #Importar el df original
