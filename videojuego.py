@@ -11,13 +11,13 @@ import requests
 
 
 #Fase Response
-response_model = requests.get("https://github.com/minivillalba4/videogames/blob/main/models/model_videogame%20(2).pkl")
-response_scaler_X=requests.get("https://github.com/minivillalba4/videogames/blob/main/models/scaler_x%20(1).pkl")
-response_target_encoder=requests.get("https://github.com/minivillalba4/videogames/blob/main/models/target_encoder_videogame%20(1).pkl")
-#Importar modelos
-open("model_videogame.pkl", "wb").write(response_model.content)
-open("scaler_X.pkl", "wb").write(response_scaler_X.content)
-open("target_encoder.pkl", "wb").write(response_target_encoder.content)
+with open("models/model_videogame (2).pkl", "rb") as file:
+    model = pickle.load(file)
+with open("models/scaler_x (1).pkl", "rb") as file:
+    scaler_X = pickle.load(file)
+with open("models/target_encoder_videogame (1).pkl", "rb") as file:
+    target_encoder = pickle.load(file)
+
 
 #Importar el df original
 df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
