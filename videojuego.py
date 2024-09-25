@@ -102,7 +102,7 @@ if st.checkbox("Mostrar predicción"):
     st.write("La predicción es")
     st.dataframe(model.predict(data_sc))
 
-
+"""
 open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
 explainer =joblib.load("explainer.pkl")
@@ -112,4 +112,4 @@ st.subheader("Importancia de las características")
 if st.checkbox("Mostrar importancia de las características"):
     # Insertar imagen desde una URL
     st.image("https://github.com/minivillalba4/videogames/blob/57c90216bf34088d384ed79f7f006c2fc1a4c4d1/imagenes/descarga%20(3).png", caption="Mi imagen de importancia", use_column_width=True)
-    
+"""    
