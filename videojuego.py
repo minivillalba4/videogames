@@ -104,4 +104,8 @@ if st.checkbox("Mostrar predicción"):
 
 open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
-
+explainer =joblib.load("explainer.pkl")
+shap_values =joblib.load("shap_values.pkl")
+st.subheader("Importancia de las características")
+if st.checkbox("Mostrar importancia de las características"):
+    shap.summary_plot(shap_values[:,:,0],X_test,plot_type="bar")
