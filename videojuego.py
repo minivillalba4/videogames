@@ -103,5 +103,5 @@ if st.checkbox("Mostrar predicción"):
 
 
 open("explainer.pkl", "wb").write(response_explainer.content)
-open("shap_values.pkl", "wb").write(response_shap_valuesr.content)
+open("shap_values.pkl", "wb").write(response_shap_values.content)
 
