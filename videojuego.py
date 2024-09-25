@@ -39,9 +39,6 @@ target_encoder = joblib.load("target_encoder.pkl")
 
 #Importar el df original
 df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
-X=df.drop("EngagementLevel",axis=1)
-y=df["EngagementLevel"]
-X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.22,random_state=23)
 
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
@@ -113,12 +110,20 @@ shap_values =joblib.load("shap_values.pkl")
 st.subheader("Importancia de las características")
 if st.checkbox("Mostrar importancia de las características"):
     from streamlit_shap import st_shap
-    
-    clase = 1
+    import shap
+
+    # Recalcular los valores SHAP para la nueva observación
+    shap_values = explainer.shap_values(data_sc)
+
+    clase = 1  # Ajusta esto si es necesario
     expected_value = explainer.expected_value[clase]
-    obs_force = 2
-    shap_values_obs = shap_values[obs_force][:, clase]
-    
-    shap_plot = shap.force_plot(expected_value, shap_values_obs, X_test.iloc[obs_force, :])
+
+    # Dado que solo tienes una observación, usa el índice 0
+    shap_values_obs = shap_values[clase][0]
+
+    # Genera el gráfico de fuerza
+    shap_plot = shap.force_plot(expected_value, shap_values_obs, data.iloc[0, :])
+
+    # Muestra el gráfico en Streamlit
     st_shap(shap_plot)
     
