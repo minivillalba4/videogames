@@ -14,12 +14,16 @@ url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/mod
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
 url_target_encoder = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/target_encoder_videogame%20(1).pkl"
 url_explainer="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/models/explainer.pkl
+url_shap_values="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/models/shap_values.pkl
+
 
 # Descargar los archivos
 response_model = requests.get(url_model)
 response_scaler_X = requests.get(url_scaler_X)
 response_target_encoder = requests.get(url_target_encoder)
-response_explainer = requests.get(explainer)
+response_explainer = requests.get(url_explainer)
+response_shap_values = requests.get(url_shap_values)
+
 
 
 # Guardar los archivos localmente
@@ -96,4 +100,8 @@ st.subheader("Prediccion")
 if st.checkbox("Mostrar predicción"):
     st.write("La predicción es")
     st.dataframe(model.predict(data_sc))
+
+
+open("explainer.pkl", "wb").write(response_explainer.content)
+open("shap_values.pkl", "wb").write(response_shap_valuesr.content)
 
