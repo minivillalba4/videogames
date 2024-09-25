@@ -13,11 +13,14 @@ import requests
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
 url_target_encoder = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/target_encoder_videogame%20(1).pkl"
+url_explainer="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/models/explainer.pkl
 
 # Descargar los archivos
 response_model = requests.get(url_model)
 response_scaler_X = requests.get(url_scaler_X)
 response_target_encoder = requests.get(url_target_encoder)
+response_explainer = requests.get(explainer)
+
 
 # Guardar los archivos localmente
 open("model_videogame.pkl", "wb").write(response_model.content)
