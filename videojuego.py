@@ -109,11 +109,13 @@ shap_values =joblib.load("shap_values.pkl")
 
 st.subheader("Importancia de las características")
 if st.checkbox("Mostrar importancia de las características"):
+    from streamlit_shap import st_shap
     
-    clase=1
-    expected_value= np.mean(model.predict_proba(X_train)[:, clase])
-    
+    clase = 1
+    expected_value = explainer.expected_value[clase]
     obs_force = 2
+    shap_values_obs = shap_values[obs_force][:, clase]
     
-    shap.force_plot(expected_value, shap_values[obs_force,:,1], X_test.iloc[obs_force, :])
+    shap_plot = shap.force_plot(expected_value, shap_values_obs, X_test.iloc[obs_force, :])
+    st_shap(shap_plot)
     
