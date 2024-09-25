@@ -13,8 +13,8 @@ import requests
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
 url_target_encoder = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/target_encoder_videogame%20(1).pkl"
-url_explainer="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/models/explainer.pkl"
-url_shap_values="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/models/shap_values.pkl"
+url_explainer="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/explainer.pkl"
+url_shap_values="https://raw.githubusercontent.com/minivillalba4/videogames/main/models/shap_values.pkl"
 
 
 # Descargar los archivos
