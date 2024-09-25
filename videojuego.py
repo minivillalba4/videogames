@@ -114,6 +114,6 @@ if st.checkbox("Mostrar importancia de las características"):
     expected_value= np.mean(model.predict_proba(X_train)[:, clase])
     
     obs_force = 2
-    shap.initjs()
+    
     shap.force_plot(expected_value, shap_values[obs_force,:,1], X_test.iloc[obs_force, :])
     
