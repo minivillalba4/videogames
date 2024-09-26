@@ -103,6 +103,8 @@ if st.checkbox("Mostrar predicción"):
 
 #Hasta aquí todo funciona correctamente
 #A partir de aquí el codigo no me funciona. Necesito que me ayudes
+explainer =shap.PermutationExplainer(model.predict_proba, X_train)
+
 #open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
 #explainer =joblib.load("explainer.pkl")
