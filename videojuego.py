@@ -125,4 +125,5 @@ if st.checkbox("Mostrar Forceplot"):
     clase=st.sidebar.slider("Seleccionar clase",0.0,3.0,0.0,1.0)
     expected_value= np.mean(model.predict_proba(X_train)[:, clase])
     shap.initjs()
-    shap.force_plot(expected_value, shap_values[obs_force,:,clase], X_test.iloc[obs_force, :])
+    force_html=shap.force_plot(expected_value, shap_values[obs_force,:,clase], X_test.iloc[obs_force, :],matplotlib=False)
+    st.components.v1.html(force_html, height=300)
