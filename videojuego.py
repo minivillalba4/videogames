@@ -1,3 +1,8 @@
+def st_shap(plot, height=None):
+    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
+    st.components.v1.html(shap_html, height=height)
+
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,9 +16,6 @@ import requests
 import shap
 import plotly.express as px
 import plotly.graph_objects as go
-def st_shap(plot, height=None):
-    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-    st.components.v1.html(shap_html, height=height)
 
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
