@@ -124,7 +124,7 @@ st.subheader("Análisis de observación")
 if st.checkbox("Mostrar análisis de observación"):
     caract_anal_obs=st.selectbox("Seleccionar la clase",[0,1,2])
     shap.initjs()
-    obs_force = =st.slider("Selecciona la observación",0,8808,1,1)
+    obs_force = st.slider("Selecciona la observación",0,8808,1,1)
     fig, ax = plt.subplots()
     shap.force_plot(expected_value, shap_values[obs_force,:,caract_anal_obs], X_test.iloc[obs_force, :])
     st.pyplot(fig)
