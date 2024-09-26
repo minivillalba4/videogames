@@ -101,7 +101,8 @@ if st.checkbox("Mostrar predicción"):
     st.write("La predicción es")
     st.dataframe(model.predict(data_sc))
 
-
+#Hasta aquí todo funciona correctamente
+#A partir de aquí el codigo no me funciona. Necesito que me ayudes
 open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
 explainer =joblib.load("explainer.pkl")
