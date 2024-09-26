@@ -41,7 +41,7 @@ target_encoder = joblib.load("target_encoder.pkl")
 
 #Importar el df original
 df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
-
+X_test=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/refs/heads/main/X_test")
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
 sexo = st.sidebar.radio("Sexo", ["Hombre", "Mujer"])
@@ -115,12 +115,7 @@ if st.checkbox("Mostrar importancia de las características"):
     st.image("https://raw.githubusercontent.com/minivillalba4/videogames/57c90216bf34088d384ed79f7f006c2fc1a4c4d1/imagenes/descarga%20(3).png", caption="Mi imagen de importancia", use_column_width=True)
 
 # Gráfico SHAP interactivo
-st.subheader("Importancia de las características")
-if st.checkbox("Mostrar gráfico interactivo SHAP"):
-    # Convertir SHAP values a un formato compatible con Plotly
-    shap.summary_plot(shap_values, data, plot_type="bar", show=False)
-    shap_vals = np.abs(shap_values).mean(0)
-    # Crear gráfico interactivo
-    fig = go.Figure([go.Bar(x=shap_vals, y=data.columns, orientation='h')])
-    fig.update_layout(title="Impacto medio de las características (SHAP)", xaxis_title="mean(|SHAP value|)", yaxis_title="Características")
-    st.plotly_chart(fig)
+st.subheader("Grafico interactivo")
+if st.checkbox("Mostrar importancia de las caracteristicas"):
+    caract_feature=st.sidebar.slider("Seleccionar característica",0,3,1,1)
+    shap.summary_plot(shap_values[:,:,caract_feature],X_test,plot_type="bar")
