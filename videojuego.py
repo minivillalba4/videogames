@@ -105,7 +105,7 @@ if st.checkbox("Mostrar predicción"):
 #A partir de aquí el codigo no me funciona. Necesito que me ayudes
 #open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
-explainer =joblib.load("explainer.pkl")
+#explainer =joblib.load("explainer.pkl")
 shap_values =joblib.load("shap_values.pkl")
 
 st.subheader("Importancia de las características")
