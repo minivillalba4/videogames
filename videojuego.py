@@ -43,7 +43,6 @@ X=df.drop("EngagementLevel",axis=1)
 y=df["EngagementLevel"]
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.22,random_state=23)
 
-st.write(X_test)
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
 sexo = st.sidebar.radio("Sexo", ["Hombre", "Mujer"])
@@ -89,6 +88,9 @@ if st.checkbox("Mostrar estadísticos principales del conjunto de datos"):
 df["EngagementLevel"]=df["EngagementLevel"].map({"Low":0,"Medium":1,"Hard":2})
 data["GameDifficulty"]=data["GameDifficulty"].map({"Facil":0,"Normal":1,"Difícil":2})
 data["InGamePurchases"]=data["InGamePurchases"].map({"No":0,"Si":1})
+
+X_test["GameDifficulty"]=X_test["GameDifficulty"].map({"Facil":0,"Normal":1,"Difícil":2})
+X_test["InGamePurchases"]=X_test["InGamePurchases"].map({"No":0,"Si":1})
 
 #Targer encoder
 data=target_encoder.transform(data)
