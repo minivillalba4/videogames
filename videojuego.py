@@ -42,6 +42,7 @@ target_encoder = joblib.load("target_encoder.pkl")
 #Importar el df original
 df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
 X_test=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/refs/heads/main/X_test")
+X_train=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/refs/heads/main/X_train.csv")
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
 sexo = st.sidebar.radio("Sexo", ["Hombre", "Mujer"])
