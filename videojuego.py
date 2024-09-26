@@ -11,6 +11,9 @@ import requests
 import shap
 import plotly.express as px
 import plotly.graph_objects as go
+def st_shap(plot, height=None):
+    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
+    st.components.v1.html(shap_html, height=height)
 
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
@@ -128,6 +131,6 @@ if st.checkbox("Mostrar análisis de observación"):
     shap.initjs()
     fig, ax = plt.subplots()
     obs_force = st.slider("Selecciona la observación",0,8808,1,1)
-    shap.force_plot(expected_value, shap_values[obs_force,:,caract_anal_obs], X_test.iloc[obs_force, :])
-    st.pyplot(fig)
+    force_plot=shap.force_plot(expected_value, shap_values[obs_force,:,caract_anal_obs], X_test.iloc[obs_force, :])
+    st_shap(force_plot)
     
