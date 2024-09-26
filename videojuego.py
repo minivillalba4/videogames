@@ -39,9 +39,6 @@ target_encoder = joblib.load("target_encoder.pkl")
 
 #Importar el df original
 df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
-X=df.drop("EngagementLevel",axis=1)
-y=df["EngagementLevel"]
-X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.22,random_state=23)
 
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
@@ -89,11 +86,9 @@ df["EngagementLevel"]=df["EngagementLevel"].map({"Low":0,"Medium":1,"Hard":2})
 data["GameDifficulty"]=data["GameDifficulty"].map({"Facil":0,"Normal":1,"Difícil":2})
 data["InGamePurchases"]=data["InGamePurchases"].map({"No":0,"Si":1})
 
-X_test["GameDifficulty"]=X_test["GameDifficulty"].map({"Easy":0,"Medium":1,"Hard":2})
 
 #Targer encoder
 data=target_encoder.transform(data)
-X_test=target_encoder.transform(X_test)
 
 #Reordenar
 expected_order=scaler_X.feature_names_in_
@@ -121,11 +116,3 @@ if st.checkbox("Mostrar importancia de las características"):
     # Insertar imagen desde una URL
     st.image("https://raw.githubusercontent.com/minivillalba4/videogames/57c90216bf34088d384ed79f7f006c2fc1a4c4d1/imagenes/descarga%20(3).png", caption="Mi imagen de importancia", use_column_width=True)
 st.write(X_test)
-st.subheader("Forceplot")
-if st.checkbox("Mostrar Forceplot"):
-    obs_force=st.sidebar.slider("Seleccionar observación",0.0,8808.0,1.0,1.0)
-    clase=st.sidebar.slider("Seleccionar clase",0.0,3.0,0.0,1.0)
-    expected_value= np.mean(model.predict_proba(X_train)[:, clase])
-    shap.initjs()
-    force_html=shap.force_plot(expected_value, shap_values[obs_force,:,clase], X_test.iloc[obs_force, :],matplotlib=False)
-    st.components.v1.html(force_html, height=300)
