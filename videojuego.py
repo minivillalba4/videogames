@@ -114,3 +114,8 @@ if st.checkbox("Mostrar importancia de las características"):
     # Insertar imagen desde una URL
     st.image("https://raw.githubusercontent.com/minivillalba4/videogames/57c90216bf34088d384ed79f7f006c2fc1a4c4d1/imagenes/descarga%20(3).png", caption="Mi imagen de importancia", use_column_width=True)
 
+# Gráfico SHAP interactivo
+st.subheader("Importancia de las características")
+if st.checkbox("Mostrar gráfico interactivo SHAP"):
+    # Convertir SHAP values a un formato compatible con Plotly
+    shap.summary_plot(shap_values, data, plot_type="bar", show=False)
