@@ -115,5 +115,7 @@ if st.checkbox("Mostrar importancia de las caracteristicas"):
     caract_feature=st.selectbox("Seleccionar la clase",[0,1,2])
     fig, ax = plt.subplots()
     shap.summary_plot(shap_values[:,:,caract_feature],X_test,plot_type="bar")
+    st.pyplot(fig)
+    fig, ax = plt.subplots()
     shap.summary_plot(shap_values[:,:,1],X_test)
     st.pyplot(fig)
