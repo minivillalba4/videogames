@@ -8,6 +8,7 @@ import pickle
 import streamlit as st
 import joblib
 import requests
+import shap
 
 
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
