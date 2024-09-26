@@ -93,6 +93,7 @@ X_test["GameDifficulty"]=X_test["GameDifficulty"].map({"Easy":0,"Medium":1,"Hard
 
 #Targer encoder
 data=target_encoder.transform(data)
+X_test=target_encoder.transform(X_test)
 
 #Reordenar
 expected_order=scaler_X.feature_names_in_
