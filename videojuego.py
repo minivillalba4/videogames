@@ -89,8 +89,6 @@ df["EngagementLevel"]=df["EngagementLevel"].map({"Low":0,"Medium":1,"Hard":2})
 data["GameDifficulty"]=data["GameDifficulty"].map({"Facil":0,"Normal":1,"Difícil":2})
 data["InGamePurchases"]=data["InGamePurchases"].map({"No":0,"Si":1})
 
-X_test["GameDifficulty"]=X_test["GameDifficulty"].map({"Facil":0,"Normal":1,"Difícil":2})
-X_test["InGamePurchases"]=X_test["InGamePurchases"].map({"No":0,"Si":1})
 
 #Targer encoder
 data=target_encoder.transform(data)
