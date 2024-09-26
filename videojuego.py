@@ -112,7 +112,15 @@ shap_values =joblib.load("shap_values.pkl")
 # Gráfico SHAP interactivo
 st.subheader("Importancia de las características")
 if st.checkbox("Mostrar importancia de las caracteristicas"):
+    caract_feature_bar=st.selectbox("Seleccionar la clase",[0,1,2])
+    fig, ax = plt.subplots()
+    shap.summary_plot(shap_values[:,:,caract_feature_bar],X_test,plot_type="bar")
+    st.pyplot(fig)
+
+st.subheader("Importancia de las características")
+if st.checkbox("Mostrar importancia de las caracteristicas"):
     caract_feature=st.selectbox("Seleccionar la clase",[0,1,2])
     fig, ax = plt.subplots()
-    shap.summary_plot(shap_values[:,:,caract_feature],X_test,plot_type="bar")
+    shap.summary_plot(shap_values[:,:,1],X_test)
     st.pyplot(fig)
+
