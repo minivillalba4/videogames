@@ -126,7 +126,8 @@ if st.checkbox("Mostrar análisis de observación"):
     caract_anal_obs=st.selectbox("Seleccionar la clase",[0,1,2])
     expected_value= np.mean(model.predict_proba(X_train)[:, caract_anal_obs])
     shap.initjs()
+    fig, ax = plt.subplots()
     obs_force = st.slider("Selecciona la observación",0,8808,1,1)
-    
     shap.force_plot(expected_value, shap_values[obs_force,:,caract_anal_obs], X_test.iloc[obs_force, :])
+    st.pyplot(fig)
     
