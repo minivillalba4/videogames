@@ -117,7 +117,7 @@ if st.checkbox("Mostrar importancia de las características"):
 # Gráfico SHAP interactivo
 st.subheader("Grafico interactivo")
 if st.checkbox("Mostrar importancia de las caracteristicas"):
-    caract_feature=st.sidebar.slider("Seleccionar característica",0,3,1,1)
+    caract_feature=st.slider("Seleccionar característica",0,3,1,1)
     fig, ax = plt.subplots()
     shap.summary_plot(shap_values[:,:,caract_feature],X_test,plot_type="bar")
     st.pyplot(fig)
