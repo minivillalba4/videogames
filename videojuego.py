@@ -119,3 +119,8 @@ st.subheader("Importancia de las características")
 if st.checkbox("Mostrar gráfico interactivo SHAP"):
     # Convertir SHAP values a un formato compatible con Plotly
     shap.summary_plot(shap_values, data, plot_type="bar", show=False)
+    shap_vals = np.abs(shap_values).mean(0)
+    # Crear gráfico interactivo
+    fig = go.Figure([go.Bar(x=shap_vals, y=data.columns, orientation='h')])
+    fig.update_layout(title="Impacto medio de las características (SHAP)", xaxis_title="mean(|SHAP value|)", yaxis_title="Características")
+    st.plotly_chart(fig)
