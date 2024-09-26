@@ -40,6 +40,9 @@ target_encoder = joblib.load("target_encoder.pkl")
 
 #Importar el df original
 df=pd.read_csv("https://raw.githubusercontent.com/minivillalba4/videogames/main/online_gaming_behavior_dataset.csv")
+X=df.drop("EngagementLevel",axis=1)
+y=df["EngagementLevel"]
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.22,random_state=23)
 
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
