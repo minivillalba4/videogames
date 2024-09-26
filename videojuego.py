@@ -109,15 +109,10 @@ open("shap_values.pkl", "wb").write(response_shap_values.content)
 #explainer =joblib.load("explainer.pkl")
 shap_values =joblib.load("shap_values.pkl")
 
-st.subheader("Importancia de las características")
-if st.checkbox("Mostrar importancia de las características"):
-    # Insertar imagen desde una URL
-    st.image("https://raw.githubusercontent.com/minivillalba4/videogames/57c90216bf34088d384ed79f7f006c2fc1a4c4d1/imagenes/descarga%20(3).png", caption="Mi imagen de importancia", use_column_width=True)
-
 # Gráfico SHAP interactivo
-st.subheader("Grafico interactivo")
+st.subheader("Importancia de las características")
 if st.checkbox("Mostrar importancia de las caracteristicas"):
-    caract_feature=st.selectbox("Género del videojuego",[0,1,2])
+    caract_feature=st.selectbox("Seleccionar la clase",[0,1,2])
     fig, ax = plt.subplots()
     shap.summary_plot(shap_values[:,:,caract_feature],X_test,plot_type="bar")
     st.pyplot(fig)
