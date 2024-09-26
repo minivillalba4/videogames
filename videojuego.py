@@ -10,7 +10,6 @@ import joblib
 import requests
 import shap
 
-
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
 url_target_encoder = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/target_encoder_videogame%20(1).pkl"
@@ -44,6 +43,7 @@ X=df.drop("EngagementLevel",axis=1)
 y=df["EngagementLevel"]
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.22,random_state=23)
 
+st.write(X_test)
 #Preguntar al usuario
 edad=st.sidebar.slider("Edad del usuario",1.0,140.0,df["Age"].mean(),1.0)
 sexo = st.sidebar.radio("Sexo", ["Hombre", "Mujer"])
