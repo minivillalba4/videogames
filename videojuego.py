@@ -8,7 +8,6 @@ import pickle
 import streamlit as st
 import joblib
 import requests
-import shap
 
 
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
@@ -104,7 +103,7 @@ if st.checkbox("Mostrar predicción"):
 
 #Hasta aquí todo funciona correctamente
 #A partir de aquí el codigo no me funciona. Necesito que me ayudes
-open("explainer.pkl", "wb").write(response_explainer.content)
+#open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
 explainer =joblib.load("explainer.pkl")
 shap_values =joblib.load("shap_values.pkl")
