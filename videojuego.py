@@ -119,4 +119,10 @@ if st.checkbox("Mostrar importancia de las características"):
     # Insertar imagen desde una URL
     st.image("https://raw.githubusercontent.com/minivillalba4/videogames/57c90216bf34088d384ed79f7f006c2fc1a4c4d1/imagenes/descarga%20(3).png", caption="Mi imagen de importancia", use_column_width=True)
 
-
+st.subheader("Forceplot")
+if st.checkbox("Mostrar Forceplot"):
+    obs_force=st.sidebar.slider("Seleccionar observación",0.0,8808.0,1.0,1.0)
+    clase=st.sidebar.slider("Seleccionar clase",0.0,3.0,0.0,1.0)
+    expected_value= np.mean(model.predict_proba(X_train)[:, clase])
+    shap.initjs()
+    shap.force_plot(expected_value, shap_values[obs_force,:,clase], X_test.iloc[obs_force, :])
