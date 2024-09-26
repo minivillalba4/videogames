@@ -9,6 +9,8 @@ import streamlit as st
 import joblib
 import requests
 import shap
+import plotly.express as px
+import plotly.graph_objects as go
 
 url_model = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/model_videogame%20(2).pkl"
 url_scaler_X = "https://raw.githubusercontent.com/minivillalba4/videogames/main/models/scaler_x%20(1).pkl"
@@ -101,10 +103,6 @@ st.subheader("Prediccion")
 if st.checkbox("Mostrar predicción"):
     st.write("La predicción es")
     st.dataframe(model.predict(data_sc))
-
-#Hasta aquí todo funciona correctamente
-#A partir de aquí el codigo no me funciona. Necesito que me ayudes
-#explainer =shap.PermutationExplainer(model.predict_proba, X_train)
 
 #open("explainer.pkl", "wb").write(response_explainer.content)
 open("shap_values.pkl", "wb").write(response_shap_values.content)
