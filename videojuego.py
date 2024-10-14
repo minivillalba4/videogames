@@ -117,22 +117,25 @@ shap_values =joblib.load("shap_values.pkl")
 
 # Gráfico SHAP interactivo
 st.subheader("Importancia de las características")
-if st.checkbox("Mostrar importancia de las caracteristicas"):
-    caract_feature=st.selectbox("Seleccionar la clase",[0,1,2])
-    fig, ax = plt.subplots()
-    shap.summary_plot(shap_values[:,:,caract_feature],X_test,plot_type="bar")
-    st.pyplot(fig)
-    fig, ax = plt.subplots()
-    shap.summary_plot(shap_values[:,:,1],X_test)
-    st.pyplot(fig)
+if st.checkbox("Mostrar importancia de las características"):
+    # Añadir un `key` único
+    caract_feature = st.selectbox("Seleccionar la clase", [0, 1, 2], key="selectbox_caract_feature")
+    
+    fig1, ax1 = plt.subplots()
+    shap.summary_plot(shap_values[:, :, caract_feature], X_test, plot_type="bar")
+    st.pyplot(fig1)
+    
+    fig2, ax2 = plt.subplots()
+    shap.summary_plot(shap_values[:, :, 1], X_test)
+    st.pyplot(fig2)
 
 st.subheader("Análisis de observación")
 if st.checkbox("Mostrar análisis de observación"):
-    caract_anal_obs=st.selectbox("Seleccionar la clase",[0,1,2])
-    expected_value= np.mean(model.predict_proba(X_train)[:, caract_anal_obs])
+    # Añadir un `key` único
+    caract_anal_obs = st.selectbox("Seleccionar la clase", [0, 1, 2], key="selectbox_caract_anal_obs")
+    expected_value = np.mean(model.predict_proba(X_train)[:, caract_anal_obs])
     shap.initjs()
-    fig, ax = plt.subplots()
-    obs_force = st.slider("Selecciona la observación",0,8808,1,1)
-    force_plot=shap.force_plot(expected_value, shap_values[obs_force,:,caract_anal_obs], X_test.iloc[obs_force, :])
-    st_shap(force_plot)
     
+    obs_force = st.slider("Selecciona la observación", 0, 8808, 1, 1)
+    force_plot = shap.force_plot(expected_value, shap_values[obs_force, :, caract_anal_obs], X_test.iloc[obs_force, :])
+    st_shap(force_plot)
